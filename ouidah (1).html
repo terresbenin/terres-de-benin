@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tour Ouidah</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial;background:#020617;color:white;overflow-x:hidden}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:10px 20px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+header a{color:white;text-decoration:none}
+
+/* HERO */
+.hero{
+height:70vh;
+background:url('tdp.jpg') center/cover fixed;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+}
+.hero h1{
+position:relative;
+font-size:38px;
+animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* CONTENU */
+.container{
+padding:80px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+h2{margin-top:30px}
+p{line-height:1.7;margin-top:10px;color:#cbd5f5}
+
+/* ICONES */
+.icons{
+display:flex;
+gap:20px;
+margin-top:15px;
+flex-wrap:wrap;
+}
+.icon{
+background:#1e293b;
+padding:10px 15px;
+border-radius:10px;
+}
+
+/* GALERIE */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-top:20px;
+}
+.gallery img{
+width:100%;
+border-radius:10px;
+transition:0.5s;
+}
+.gallery img:hover{
+transform:scale(1.1);
+filter:brightness(1.2);
+}
+
+/* BOUTON */
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 30px;
+border-radius:30px;
+background:linear-gradient(45deg,#22c55e,#16a34a);
+color:white;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 0 20px rgba(34,197,94,0.6);
+transition:0.3s;
+}
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px rgba(34,197,94,1);
+}
+
+/* EXPERIENCE */
+.exp{
+margin-top:30px;
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html">⬅ Retour</a>
+<a href="https://api.whatsapp.com/send?phone=2290148920897">WhatsApp</a>
+</header>
+
+<section class="hero">
+<h1>Découvrez Ouidah</h1>
+</section>
+
+<div class="container">
+
+<h2>Un lieu chargé d’histoire</h2>
+<p>
+Ouidah est un site emblématique de l’histoire africaine, connu pour la Route des Esclaves et la Porte du Non-Retour. C’est un lieu de mémoire, de culture et de spiritualité.
+</p>
+
+<div class="icons">
+<div class="icon">🏛️ Histoire</div>
+<div class="icon">🌍 Culture</div>
+<div class="icon">📸 Visites guidées</div>
+</div>
+
+<h2>Galerie</h2>
+<div class="gallery">
+<img src="tdp.jpg">
+<img src="pdnr.jpg">
+<img src="cxlture.jpg">
+</div>
+
+<div class="exp">
+<h2>Pourquoi visiter Ouidah ?</h2>
+<p>
+✔️ Découverte historique<br>
+✔️ Sites culturels uniques<br>
+✔️ Expérience enrichissante
+</p>
+</div>
+
+<a class="btn" href="https://api.whatsapp.com/send?phone=2290148920897&text=Bonjour%20je%20veux%20réserver%20Ouidah">
+Réserver maintenant
+</a>
+
+</div>
+
+<footer>
+<p>© 2026 Terres de Bénin</p>
+</footer>
+
+</body>
+</html>
