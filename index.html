@@ -103,7 +103,79 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
 /* FAQ */
 .faq-box{background:#1e293b;padding:22px;border-radius:18px;margin-top:18px;cursor:pointer;transition:0.3s;}
 .faq-box:hover{background:#334155;}
+/* PACKS PREMIUM */
+.packs-section{
+padding:90px 20px;
+overflow:hidden;
+}
 
+.section-title{
+font-size:34px;
+margin-bottom:30px;
+text-align:center;
+}
+
+.packs-wrapper{
+overflow:hidden;
+position:relative;
+}
+
+.packs-track{
+display:flex;
+gap:20px;
+width:max-content;
+animation:packsScroll 38s linear infinite;
+}
+
+.pack-card{
+min-width:320px;
+height:420px;
+border-radius:30px;
+overflow:hidden;
+background-size:cover;
+background-position:center;
+position:relative;
+cursor:pointer;
+transition:0.4s ease;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.pack-card:hover{
+transform:translateY(-10px) scale(1.03);
+}
+
+.pack-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(
+to top,
+rgba(0,0,0,.85),
+rgba(0,0,0,.15)
+);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:25px;
+}
+
+.pack-overlay h3{
+font-size:28px;
+margin-bottom:8px;
+}
+
+.pack-overlay p{
+font-size:16px;
+color:#d1d5db;
+}
+
+@keyframes packsScroll{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-50%);
+}
+}
 /* RESPONSIVE */
 @media(max-width:768px){.about-container{grid-template-columns:1fr;}.hero h1{font-size:42px;}.hero p{font-size:18px;}}
 </style>
@@ -167,12 +239,118 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
 <div class="review-card"><p>Ganvié était magique. Merci Terres de Bénin.</p><h4>- Michael, Canada</h4></div>
 </section>
 
-<!-- OFFERS -->
-<section id="offres">
-<h2>Nos Offres</h2>
-<div class="card" style="background-image:url('ganviea.jpg')" onclick="window.location.href='ganvie.html';"><h3>Ganvié</h3></div>
-<div class="card" style="background-image:url('pdr.jpg')" onclick="window.location.href='ouidah.html';"><h3>Ouidah</h3></div>
-<div class="card" style="background-image:url('ganvie1.jpg')" onclick="window.location.href='cotonou.html';"><h3>Cotonou</h3></div>
+<!-- PACKS PREMIUM -->
+<section id="offres" class="packs-section">
+
+<h2 class="section-title">
+Nos Packs d’Expériences
+</h2>
+
+<div class="packs-wrapper">
+
+<div class="packs-track">
+
+<!-- RACINES SACRÉES -->
+<div class="pack-card"
+style="background-image:url('ouidah.jpg')"
+onclick="window.location.href='racines-sacrees.html'">
+<div class="pack-overlay">
+<h3>🌍 Racines Sacrées</h3>
+<p>Tourisme religieux & spirituel</p>
+</div>
+</div>
+
+<!-- HERITAGE -->
+<div class="pack-card"
+style="background-image:url('abomey.jpg')"
+onclick="window.location.href='heritage-royal.html'">
+<div class="pack-overlay">
+<h3>👑 Héritage Royal</h3>
+<p>Culture & histoire du royaume</p>
+</div>
+</div>
+
+<!-- GANVIE -->
+<div class="pack-card"
+style="background-image:url('ganviea.jpg')"
+onclick="window.location.href='ganvie-prestige.html'">
+<div class="pack-overlay">
+<h3>🚣 Ganvié Prestige</h3>
+<p>Immersion lacustre premium</p>
+</div>
+</div>
+
+<!-- MEDICAL -->
+<div class="pack-card"
+style="background-image:url('medical.jpg')"
+onclick="window.location.href='bien-etre-afrique.html'">
+<div class="pack-overlay">
+<h3>🩺 Bien-Être Afrique</h3>
+<p>Tourisme médical & confort</p>
+</div>
+</div>
+
+<!-- DIASPORA -->
+<div class="pack-card"
+style="background-image:url('diaspora.jpg')"
+onclick="window.location.href='retour-sources.html'">
+<div class="pack-overlay">
+<h3>🛖 Retour aux Sources</h3>
+<p>Voyage mémoire diaspora</p>
+</div>
+</div>
+
+<!-- LITTORAL -->
+<div class="pack-card"
+style="background-image:url('plage.jpg')"
+onclick="window.location.href='evasion-littorale.html'">
+<div class="pack-overlay">
+<h3>🌊 Évasion Littorale</h3>
+<p>Détente & luxe balnéaire</p>
+</div>
+</div>
+
+<!-- PENDJARI -->
+<div class="pack-card"
+style="background-image:url('pendjari.jpg')"
+onclick="window.location.href='pendjari-safari.html'">
+<div class="pack-overlay">
+<h3>🦁 Nature Sauvage Pendjari</h3>
+<p>Safari & écotourisme</p>
+</div>
+</div>
+
+<!-- BUSINESS -->
+<div class="pack-card"
+style="background-image:url('business.jpg')"
+onclick="window.location.href='business-discovery.html'">
+<div class="pack-overlay">
+<h3>💼 Business & Découverte</h3>
+<p>Business tourism premium</p>
+</div>
+</div>
+
+<!-- DUPLICATION POUR BOUCLE FLUIDE -->
+<div class="pack-card"
+style="background-image:url('ouidah.jpg')"
+onclick="window.location.href='racines-sacrees.html'">
+<div class="pack-overlay">
+<h3>🌍 Racines Sacrées</h3>
+<p>Tourisme religieux & spirituel</p>
+</div>
+</div>
+
+<div class="pack-card"
+style="background-image:url('ganviea.jpg')"
+onclick="window.location.href='ganvie-prestige.html'">
+<div class="pack-overlay">
+<h3>🚣 Ganvié Prestige</h3>
+<p>Immersion lacustre premium</p>
+</div>
+</div>
+
+</div>
+</div>
 </section>
 
 <!-- RESERVATION -->
@@ -282,6 +460,21 @@ if(gallery){
     gallery.addEventListener('mouseenter',()=>gallery.style.animationPlayState='paused');
     gallery.addEventListener('mouseleave',()=>gallery.style.animationPlayState='running');
 }
+/* PAUSE AU SURVOL DES PACKS */
+const packsTrack =
+document.querySelector('.packs-track');
+
+packsTrack.addEventListener(
+'mouseenter',
+()=>{
+packsTrack.style.animationPlayState='paused';
+});
+
+packsTrack.addEventListener(
+'mouseleave',
+()=>{
+packsTrack.style.animationPlayState='running';
+});
 </script>
 
 </body>
