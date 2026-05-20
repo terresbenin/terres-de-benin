@@ -59,7 +59,14 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
 /* HERO SLIDER */
 .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:20px;}
 .hero::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;animation:slider 18s infinite;z-index:-2;}
-.hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:-1;}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at center, transparent 1%, rgba(0,0,0,0.99) 80%),
+    linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+}
 @keyframes slider{0%{background-image:url('ganviea.jpg');}33%{background-image:url('ganvieb.jpg');}66%{background-image:url('pdr.jpg');}100%{background-image:url('ganvie1.jpg');}}
 .hero h1{font-size:60px;font-weight:900;text-shadow:0 10px 30px rgba(0,0,0,0.6);}
 .hero p{margin-top:10px;font-size:22px;}
@@ -93,22 +100,83 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
 .booking-box{display:grid;gap:10px;margin-top:20px;}
 .booking-box input, .booking-box select, .booking-box textarea{padding:12px;border-radius:10px;border:none;background:#1e293b;color:white;outline:none;}
 
-/* GALLERY */
+/* ==========================
+   GALERIE LUXURY HORIZONTAL
+========================== */
+
+#gallery{
+  padding:80px 0;
+  overflow:hidden;
+  position:relative;
+}
+
+#gallery h2{
+  text-align:center;
+  font-size:52px;
+  margin-bottom:35px;
+}
+
+.gallery-wrapper{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+
 .gallery-track{
   display:flex;
-  gap:10px;
-  overflow:hidden;
-  scroll-behavior:smooth;
-  animation:galleryScroll 30s linear infinite;
+  align-items:center;
+  gap:20px;
+  width:max-content;
+  animation:galleryFlow 40s linear infinite;
+  padding:10px 0;
 }
+
 .gallery-track img{
-  width:220px;
-  border-radius:15px;
-  cursor:pointer;
-  transition:0.3s;
+  width:320px;
+  height:220px;
+  object-fit:cover;
+  border-radius:24px;
+  flex-shrink:0;
+  transition:0.5s ease;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.4);
 }
-.gallery-track img:hover{transform:scale(1.05);}
-@keyframes galleryScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.gallery-track img:hover{
+  transform:scale(1.08);
+}
+
+/* défilement ultra fluide */
+@keyframes galleryFlow{
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  #gallery h2{
+    font-size:42px;
+  }
+
+  .gallery-track img{
+    width:280px;
+    height:190px;
+  }
+}
+/* Mobile */
+@media(max-width:768px){
+  .gallery-track img{
+    width:280px;
+    height:180px;
+  }
+}
+
 
 /* REVIEWS + STATS */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;margin:40px 0;}
@@ -203,9 +271,165 @@ transform:translateX(-50%);
 }
 /* RESPONSIVE */
 @media(max-width:768px){.about-container{grid-template-columns:1fr;}.hero h1{font-size:42px;}.hero p{font-size:18px;}}
+/* =========================
+NETFLIX LUXURY UPGRADE
+========================= */
+
+body{
+  background:#050816;
+}
+
+/* TITRES STYLE CINEMA */
+h1, h2{
+  letter-spacing:1px;
+  font-weight:800;
+}
+
+/* SECTIONS STYLE STREAMING */
+section{
+  padding:60px 20px;
+}
+
+/* TITRE SECTION STYLE NETFLIX */
+section h2{
+  font-size:26px;
+  margin-bottom:20px;
+  position:relative;
+}
+
+section h2::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:60px;
+  height:3px;
+  background:#22c55e;
+  border-radius:10px;
+}
+
+/* GLASS CARD PREMIUM */
+.glass{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* HOVER CINEMA ZOOM */
+.pack, .pack-card, .card{
+  transition:0.4s ease;
+}
+
+.pack:hover, .pack-card:hover, .card:hover{
+  transform:scale(1.08);
+  z-index:2;
+}
+
+/* SCROLL BAR NETFLIX STYLE */
+::-webkit-scrollbar{
+  height:6px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#22c55e;
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+  background:#0f172a;
+}
+.netflix-scroll{
+  display:flex;
+  overflow-x:auto;
+  gap:18px;
+  padding-bottom:10px;
+  scroll-snap-type:x mandatory;
+}
+
+.netflix-scroll .pack{
+  min-width:260px;
+  height:180px;
+  border-radius:18px;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:flex-end;
+  padding:15px;
+  font-weight:bold;
+  scroll-snap-align:start;
+  position:relative;
+  overflow:hidden;
+}
+
+/* overlay cinematic */
+.netflix-scroll .pack::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+#benin-map{
+  width:100%;
+  height:450px;
+  border-radius:18px;
+  overflow:hidden;
+  margin-top:15px;
+  border:1px solid rgba(255,255,255,0.1);
+}
 </style>
 </head>
+<!-- LEAFLET MAP -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<script>
+const map = L.map('benin-map').setView([9.3077, 2.3158], 7);
+
+// Fond de carte style sombre premium
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+// ====== MARQUEURS TOURISTIQUES ======
+
+const locations = [
+  {
+    name: "Cotonou",
+    coords: [6.3703, 2.3912],
+    desc: "Capitale économique du Bénin"
+  },
+  {
+    name: "Ouidah",
+    coords: [6.3631, 2.0854],
+    desc: "Route des esclaves & patrimoine historique"
+  },
+  {
+    name: "Ganvié",
+    coords: [6.4803, 2.4183],
+    desc: "Village lacustre unique en Afrique"
+  },
+  {
+    name: "Dassa-Zoumè",
+    coords: [7.7500, 2.1833],
+    desc: "Tourisme religieux et grottes sacrées"
+  },
+  {
+    name: "Parakou",
+    coords: [9.3373, 2.6303],
+    desc: "Grand centre culturel du Nord"
+  }
+];
+
+locations.forEach(loc => {
+  L.marker(loc.coords)
+    .addTo(map)
+    .bindPopup(
+      `<b>${loc.name}</b><br>${loc.desc}`
+    );
+});
+</script>
 <body>
 
 <!-- LOADER -->
@@ -241,27 +465,101 @@ transform:translateX(-50%);
 <p id="aboutP1">Terres de Bénin est une agence de tourisme internationale premium, spécialisée dans des circuits authentiques et immersifs.</p>
 <p id="aboutP2">Notre mission : faire découvrir la richesse culturelle, historique et naturelle du Bénin, tout en offrant un service haut de gamme.</p>
 <p id="aboutP3">De Ganvié à Ouidah et Cotonou, chaque expérience est guidée et sécurisée pour tous les voyageurs.</p>
+<section class="glass">
+<h2>Expériences immersives</h2>
+<p style="color:#d1d5db;line-height:1.8;">
+Explorez le Bénin comme une production cinématographique :
+marchés vibrants, villages lacustres, rites ancestraux, et expériences privées premium.
+</p>
+</section>
 <a class="btn" href="#offres" id="aboutBtn">Découvrir nos expériences</a>
 </div>
 <div class="about-right">
-<div class="about-card"><h3>🌍 Mission</h3><p id="missionText">Découvrir le Bénin au monde avec authenticité et excellence.</p></div>
-<div class="about-card"><h3>⭐ Vision</h3><p id="visionText">Être la référence du tourisme premium en Afrique de l’Ouest.</p></div>
-<div class="about-card"><h3>🤝 Expérience</h3><p id="expText">Guides professionnels + circuits immersifs + accompagnement complet.</p></div>
+<div class="about-card"><h3> Mission</h3><p id="missionText">Découvrir le Bénin au monde avec authenticité et excellence.</p></div>
+<div class="about-card"><h3> Vision</h3><p id="visionText">Être la référence du tourisme premium en Afrique de l’Ouest.</p></div>
+<div class="about-card"><h3> Expérience</h3><p id="expText">Guides professionnels + circuits immersifs + accompagnement complet.</p></div>
 </div>
 </div>
 </section>
 
-<!-- STATISTICS -->
-<section class="stats">
-<div class="stat-box"><h3>500+</h3><p>Voyageurs satisfaits</p></div>
-<div class="stat-box"><h3>20+</h3><p>Circuits premium</p></div>
-<div class="stat-box"><h3>24/7</h3><p>Assistance voyage</p></div>
+<!-- STATISTIQUES PREMIUM -->
+<section class="stats-section">
+
+<h2 style="text-align:center;font-size:38px;margin-bottom:35px;">
+Terres de Bénin en chiffres
+</h2>
+
+<div class="stats">
+
+<div class="stat-box">
+<div class="stat-number" data-target="500">230</div>
+<p>Voyageurs satisfaits</p>
+</div>
+
+<div class="stat-box">
+<div class="stat-number" data-target="35">30+</div>
+<p>Destinations Premium</p>
+</div>
+
+<div class="stat-box">
+<div class="stat-number" data-target="24">12</div>
+<p>Assistance 24/7</p>
+</div>
+
+<div class="stat-box">
+<div class="stat-number" data-target="98"></div>
+<p>76% Satisfaction</p>
+</div>
+
+</div>
 </section>
 
-<!-- REVIEWS -->
-<section class="reviews">
-<div class="review-card"><p>Une expérience exceptionnelle avec une organisation parfaite.</p><h4>- Sophie, France</h4></div>
-<div class="review-card"><p>Ganvié était magique. Merci Terres de Bénin.</p><h4>- Michael, Canada</h4></div>
+
+<!-- AVIS PREMIUM -->
+<section class="reviews-section">
+
+<h2 style="text-align:center;font-size:38px;margin-bottom:30px;">
+Ils ont voyagé avec nous
+</h2>
+
+<div class="reviews-slider">
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+Une expérience exceptionnelle à Ganvié.
+Organisation parfaite et guides très professionnels.
+</p>
+<h4>— Sophie, France</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+Le pack Racine Sacrée était incroyable.
+La grotte mariale de Dassa est magnifique.
+</p>
+<h4>— Michael, Canada</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+Très belle découverte culturelle.
+Je recommande fortement Terres de Bénin.
+</p>
+<h4>— Aïcha, Bénin</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">⭐⭐⭐⭐⭐</div>
+<p>
+Une agence sérieuse avec un accompagnement premium.
+</p>
+<h4>— David, Belgique</h4>
+</div>
+
+</div>
 </section>
 
 <!-- PACKS PREMIUM -->
@@ -273,14 +571,14 @@ Nos Packs d’Expériences
 
 <div class="packs-wrapper">
 
-<div class="packs-track">
+<div class="packs-track netflix-scroll">
 
 <!-- RACINES SACRÉES -->
 <div class="pack-card"
 style="background-image:url('ouidah.jpg')"
 onclick="window.location.href='racines-sacrees.html'">
 <div class="pack-overlay">
-<h3>🌍 Racines Sacrées</h3>
+<h3> Racines Sacrées</h3>
 <p>Tourisme religieux & spirituel</p>
 </div>
 </div>
@@ -290,7 +588,7 @@ onclick="window.location.href='racines-sacrees.html'">
 style="background-image:url('abomey.jpg')"
 onclick="window.location.href='heritage-royal.html'">
 <div class="pack-overlay">
-<h3>👑 Héritage Royal</h3>
+<h3> Héritage Royal</h3>
 <p>Culture & histoire du royaume</p>
 </div>
 </div>
@@ -300,7 +598,7 @@ onclick="window.location.href='heritage-royal.html'">
 style="background-image:url('ganviea.jpg')"
 onclick="window.location.href='ganvie-prestige.html'">
 <div class="pack-overlay">
-<h3>🚣 Ganvié Prestige</h3>
+<h3> Ganvié Prestige</h3>
 <p>Immersion lacustre premium</p>
 </div>
 </div>
@@ -310,7 +608,7 @@ onclick="window.location.href='ganvie-prestige.html'">
 style="background-image:url('medical.jpg')"
 onclick="window.location.href='bien-etre-afrique.html'">
 <div class="pack-overlay">
-<h3>🩺 Bien-Être Afrique</h3>
+<h3> Bien-Être Afrique</h3>
 <p>Tourisme médical & confort</p>
 </div>
 </div>
@@ -320,7 +618,7 @@ onclick="window.location.href='bien-etre-afrique.html'">
 style="background-image:url('diaspora.jpg')"
 onclick="window.location.href='retour-sources.html'">
 <div class="pack-overlay">
-<h3>🛖 Retour aux Sources</h3>
+<h3> Retour aux Sources</h3>
 <p>Voyage mémoire diaspora</p>
 </div>
 </div>
@@ -330,7 +628,7 @@ onclick="window.location.href='retour-sources.html'">
 style="background-image:url('plage.jpg')"
 onclick="window.location.href='evasion-littorale.html'">
 <div class="pack-overlay">
-<h3>🌊 Évasion Littorale</h3>
+<h3> Évasion Littorale</h3>
 <p>Détente & luxe balnéaire</p>
 </div>
 </div>
@@ -340,7 +638,7 @@ onclick="window.location.href='evasion-littorale.html'">
 style="background-image:url('pendjari.jpg')"
 onclick="window.location.href='pendjari-safari.html'">
 <div class="pack-overlay">
-<h3>🦁 Nature Sauvage Pendjari</h3>
+<h3> Nature Sauvage Pendjari</h3>
 <p>Safari & écotourisme</p>
 </div>
 </div>
@@ -350,8 +648,8 @@ onclick="window.location.href='pendjari-safari.html'">
 style="background-image:url('business.jpg')"
 onclick="window.location.href='business-discovery.html'">
 <div class="pack-overlay">
-<h3>💼 Business & Découverte</h3>
-<p>Business tourism premium</p>
+<h3> Business & Découverte</h3>
+<p>Business tourism</p>
 </div>
 </div>
 
@@ -360,7 +658,7 @@ onclick="window.location.href='business-discovery.html'">
 style="background-image:url('ouidah.jpg')"
 onclick="window.location.href='racines-sacrees.html'">
 <div class="pack-overlay">
-<h3>🌍 Racines Sacrées</h3>
+<h3> Racines Sacrées</h3>
 <p>Tourisme religieux & spirituel</p>
 </div>
 </div>
@@ -369,8 +667,8 @@ onclick="window.location.href='racines-sacrees.html'">
 style="background-image:url('ganviea.jpg')"
 onclick="window.location.href='ganvie-prestige.html'">
 <div class="pack-overlay">
-<h3>🚣 Ganvié Prestige</h3>
-<p>Immersion lacustre premium</p>
+<h3> Ganvié Prestige</h3>
+<p>Immersion lacustre</p>
 </div>
 </div>
 
@@ -393,21 +691,43 @@ onclick="window.location.href='ganvie-prestige.html'">
 <button class="btn">Réserver</button>
 </div>
 </section>
+<!-- CARTE INTERACTIVE -->
+<section id="map-section" class="glass">
+  <h2>Carte du Bénin</h2>
 
-<!-- GALLERY -->
+  <div id="benin-map"></div>
+
+  <p style="color:#d1d5db;margin-top:10px;">
+    Explorez les destinations : Cotonou, Ouidah, Ganvié, Dassa, Parakou.
+  </p>
+</section>
+<!-- GALLERY PREMIUM -->
 <section id="gallery">
-<h2>Galerie</h2>
-<div class="gallery-track">
-<img src="ganviea.jpg">
-<img src="ganvieb.jpg">
-<img src="pdr.jpg">
-<img src="ganvie1.jpg">
-<!-- duplication pour boucle fluide -->
-<img src="ganviea.jpg">
-<img src="ganvieb.jpg">
-<img src="pdr.jpg">
-<img src="ganvie1.jpg">
-</div>
+  
+  <h2>Galerie</h2>
+  
+  <div class="gallery-wrapper">
+    
+    <div class="gallery-track">
+      
+      <img src="ganviea.jpg">
+      <img src="ganvieb.jpg">
+      <img src="pdr.jpg">
+      <img src="ganvie1.jpg">
+      <img src="cotonou.jpg">
+      <img src="ouidah.jpg">
+      
+      <!-- duplication obligatoire -->
+      <img src="ganviea.jpg">
+      <img src="ganvieb.jpg">
+      <img src="pdr.jpg">
+      <img src="ganvie1.jpg">
+      <img src="cotonou.jpg">
+      <img src="ouidah.jpg">
+      
+    </div>
+  </div>
+  
 </section>
 
 <!-- CONTACT -->
@@ -442,64 +762,180 @@ if(menuPanel && menuBtn){
     });
 }
 
-// ===== MULTILINGUE FR/EN =====
-let currentLang='fr';
-const langBtn=document.querySelector('.lang-btn');
-if(langBtn){
-    langBtn.addEventListener('click', ()=>{
-        if(currentLang==='fr'){
-            currentLang='en';
-            langBtn.innerText='EN';
-            document.getElementById('heroTitle').innerText='Benin Lands';
-            document.getElementById('heroText').innerText='Discover Benin differently';
-            document.getElementById('heroBtn').innerText='Explore';
-            document.getElementById('aboutTitle').innerText='About Terres de Benin';
-            document.getElementById('aboutP1').innerText='Terres de Benin is an international premium travel agency, specialized in authentic and immersive tours.';
-            document.getElementById('aboutP2').innerText='Our mission: showcase the cultural, historical and natural wealth of Benin with high-end service.';
-            document.getElementById('aboutP3').innerText='From Ganvie to Ouidah and Cotonou, every experience is guided and secure for all travelers.';
-            document.getElementById('aboutBtn').innerText='Discover our experiences';
-            document.getElementById('missionText').innerText='Show Benin to the world with authenticity and excellence.';
-            document.getElementById('visionText').innerText='Be the reference for premium tourism in West Africa.';
-            document.getElementById('expText').innerText='Professional guides + immersive tours + full support.';
-        }else{
-            currentLang='fr';
-            langBtn.innerText='FR';
-            document.getElementById('heroTitle').innerText='Terres de Bénin';
-            document.getElementById('heroText').innerText='Découvrez le Bénin autrement';
-            document.getElementById('heroBtn').innerText='Explorer';
-            document.getElementById('aboutTitle').innerText='À propos de Terres de Bénin';
-            document.getElementById('aboutP1').innerText='Terres de Bénin est une agence de tourisme internationale premium, spécialisée dans des circuits authentiques et immersifs.';
-            document.getElementById('aboutP2').innerText='Notre mission : faire découvrir la richesse culturelle, historique et naturelle du Bénin, tout en offrant un service haut de gamme.';
-            document.getElementById('aboutP3').innerText='De Ganvié à Ouidah et Cotonou, chaque expérience est guidée et sécurisée pour tous les voyageurs.';
-            document.getElementById('aboutBtn').innerText='Découvrir nos expériences';
-            document.getElementById('missionText').innerText='Découvrir le Bénin au monde avec authenticité et excellence.';
-            document.getElementById('visionText').innerText='Être la référence du tourisme premium en Afrique de l’Ouest.';
-            document.getElementById('expText').innerText='Guides professionnels + circuits immersifs + accompagnement complet.';
-        }
-    });
-}
+/* ==========================
+   MULTILINGUE FR / EN
+========================== */
+let currentLang = "fr";
+const langBtn = document.querySelector(".lang-btn");
 
+const translations = {
+  fr: {
+    heroTitle: "Terres de Bénin",
+    heroText: "Découvrez le Bénin autrement",
+    heroBtn: "Explorer",
+
+    aboutTitle: "À propos de Terres de Bénin",
+    aboutP1:
+      "Terres de Bénin est une agence de tourisme internationale premium spécialisée dans des circuits authentiques et immersifs.",
+
+    aboutP2:
+      "Notre mission est de faire découvrir la richesse culturelle, historique, spirituelle et naturelle du Bénin à travers des expériences inoubliables.",
+
+    aboutP3:
+      "De Ganvié à Ouidah, de Cotonou à Dassa, chaque expérience est guidée, sécurisée et pensée pour offrir un tourisme d’exception.",
+
+    aboutBtn: "Découvrir nos expériences",
+
+    mission:
+      "Faire découvrir le Bénin au monde avec authenticité et excellence.",
+
+    vision:
+      "Devenir la référence du tourisme premium en Afrique de l’Ouest.",
+
+    experience:
+      "Guides professionnels + circuits immersifs + accompagnement complet."
+  },
+
+  en: {
+    heroTitle: "Benin Lands",
+    heroText: "Discover Benin differently",
+    heroBtn: "Explore",
+
+    aboutTitle: "About Terres de Benin",
+
+    aboutP1:
+      "Terres de Benin is a premium international travel agency specialized in authentic and immersive experiences.",
+
+    aboutP2:
+      "Our mission is to showcase the cultural, historical, spiritual and natural richness of Benin through unforgettable experiences.",
+
+    aboutP3:
+      "From Ganvie to Ouidah, from Cotonou to Dassa, each journey is guided, secure and designed for exceptional tourism.",
+
+    aboutBtn: "Discover our experiences",
+
+    mission:
+      "Show Benin to the world with authenticity and excellence.",
+
+    vision:
+      "Become the premium tourism reference in West Africa.",
+
+    experience:
+      "Professional guides + immersive tours + full support."
+  }
+};
+
+if (langBtn) {
+  langBtn.addEventListener("click", function () {
+
+    currentLang =
+      currentLang === "fr" ? "en" : "fr";
+
+    langBtn.innerText =
+      currentLang.toUpperCase();
+
+    const t = translations[currentLang];
+
+    const update = (id, text) => {
+      const el = document.getElementById(id);
+      if (el) el.innerText = text;
+    };
+
+    update("heroTitle", t.heroTitle);
+    update("heroText", t.heroText);
+    update("heroBtn", t.heroBtn);
+    update("aboutTitle", t.aboutTitle);
+    update("aboutP1", t.aboutP1);
+    update("aboutP2", t.aboutP2);
+    update("aboutP3", t.aboutP3);
+    update("aboutBtn", t.aboutBtn);
+    update("missionText", t.mission);
+    update("visionText", t.vision);
+    update("expText", t.experience);
+  });
+}
 // ===== GALERIE FLUIDE =====
-const gallery = document.querySelector('.gallery-track');
-if(gallery){
-    gallery.addEventListener('mouseenter',()=>gallery.style.animationPlayState='paused');
-    gallery.addEventListener('mouseleave',()=>gallery.style.animationPlayState='running');
+const gallery =
+  document.querySelector(".gallery-track");
+
+if (gallery) {
+  gallery.addEventListener(
+    "mouseenter",
+    () => gallery.style.animationPlayState = "paused"
+  );
+
+  gallery.addEventListener(
+    "mouseleave",
+    () => gallery.style.animationPlayState = "running"
+  );
 }
-/* PAUSE AU SURVOL DES PACKS */
-const packsTrack =
-document.querySelector('.packs-track');
+/* PACKS DRAG MANUEL
+========================== */
+const slider =
+  document.querySelector(".packs-track");
 
-packsTrack.addEventListener(
-'mouseenter',
-()=>{
-packsTrack.style.animationPlayState='paused';
-});
+if (slider) {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-packsTrack.addEventListener(
-'mouseleave',
-()=>{
-packsTrack.style.animationPlayState='running';
-});
+  slider.addEventListener("mousedown", e => {
+    isDown = true;
+    slider.style.cursor = "grabbing";
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+    slider.style.cursor = "grab";
+  });
+
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+    slider.style.cursor = "grab";
+  });
+
+  slider.addEventListener("mousemove", e => {
+    if (!isDown) return;
+
+    e.preventDefault();
+
+    const x =
+      e.pageX - slider.offsetLeft;
+
+    const walk =
+      (x - startX) * 2;
+
+    slider.scrollLeft =
+      scrollLeft - walk;
+  });
+
+  /* MOBILE TOUCH */
+  let touchStartX = 0;
+
+  slider.addEventListener(
+    "touchstart",
+    e => {
+      touchStartX =
+        e.touches[0].clientX;
+    }
+  );
+
+  slider.addEventListener(
+    "touchmove",
+    e => {
+      const touchX =
+        e.touches[0].clientX;
+
+      slider.scrollLeft +=
+        touchStartX - touchX;
+
+      touchStartX = touchX;
+    }
+  );
+}
+
 </script>
 
 </body>
